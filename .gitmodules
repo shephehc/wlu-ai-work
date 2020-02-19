@@ -1,0 +1,6 @@
+[submodule "numpy"]
+	path = numpy
+	url = https://github.com/numpy/numpy.git
+[submodule "tensorflow"]
+	path = tensorflow
+	url = https://github.com/tensorflow/tensorflow.git
