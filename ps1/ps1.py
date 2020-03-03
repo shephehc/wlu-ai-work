@@ -26,17 +26,62 @@ def readData(d):
     b2 = np.mean(y) - m2*np.mean(x2)
     print("y = " + str(round(m2, 2)) + "x2 " + str(round(b2, 2)))
     
-
-    '''Now solve the full linear regression y=w1x1+w2x2+by=w1x1+w2x2+b using np.linalg.lstsq. 
-    Hint: The example they give can be modified slightly to do what we need. 
-    You should pass x1, x2 to np.vstack instead of just x. 
-    The output of np.linalg.lstsq(A, y)[0] will then be your w1, w2, b instead of the m, c in their example.'''
-    
-    print("Part 2:")
+    print("\nPart 2:\n")
     a = np.vstack([(x1, x2), np.ones(len(x1))]).T
     w1, w2, b = np.linalg.lstsq(a, y, rcond=None)[0]
     print("y = " + str(round(w1, 2)) + "x1 + " + str(round(w2,2)) + "x2 " + str(round(b, 2)))
 
+    #Part 3
+
+    
+    print("\nPart 3:\n")
+    abv = 0 #above 0 class
+    blw = 0 #below 0 class
+    for i in range(1,len(data)-1):
+        #print(x1[i]*w1 + x2[i]*w2 + b)
+        if x1[i]*w1 + x2[i]*w2 + b >0:
+            #print('abv')
+            abv +=1
+        else:
+            blw +=1
+            #print('blw')
+    abvpct = abv / len(data)
+    blwpct = 1-abvpct
+    print(round(abvpct,2), "% Above")
+    print(round(blwpct,2 ), "% Below")
+
+    ones = 0
+    zeros = 0
+    '''for i in range(len(z)):
+        if z[i] == 0:
+            zeros+=1
+        else:
+            ones+=1'''
+    #print(z)
+    #print(ones, zeros)
+    
+    for j in range(25):
+        if z[j] == 0:
+            zeros+=1
+        else:
+            ones+=1
+    print(ones, zeros)
+    zeros=ones=0
+    for j in range(50):
+        if z[j] == 0:
+            zeros+=1
+        else:
+            ones+=1
+    print(ones, zeros)
+    zeros=ones=0
+    for j in range(75):
+        if z[j] == 0:
+            zeros+=1
+        else:
+            ones+=1
+    print(ones, zeros)
+    zeros=ones=0
+        
     
 
 fname = 'assign1_data.txt'
